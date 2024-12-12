@@ -1,0 +1,27 @@
+# Configuration for Cog ⚙️
+# Reference: https://cog.run/yaml
+
+build:
+  gpu: true
+  python_version: "3.11"
+  system_packages:
+    - "ffmpeg"
+  python_packages:
+    - "torch==2.4"
+    - "transformers==4.46.3"
+    - "torchvision"
+    - "git+https://github.com/huggingface/diffusers.git@c96bfa5c80eca798d555a79a491043c311d0f608"
+    - "av==11.0.0"
+    - "moviepy==1.0.3"
+    - "click==8.1.7"
+    - "peft==0.13.2"
+    - "Pillow==9.5.0"
+    - "sentencepiece==0.2.0"
+    - "huggingface-hub==0.24.5"
+  
+  run:
+    - curl -o /usr/local/bin/pget -L "https://github.com/replicate/pget/releases/download/v0.8.2/pget_linux_x86_64" && chmod +x /usr/local/bin/pget
+
+# predict.py defines how predictions are run on your model
+predict: "predict.py:Predictor"
+# train: "train.py:train"
